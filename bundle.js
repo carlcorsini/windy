@@ -2376,8 +2376,8 @@ var Forecast = /*#__PURE__*/function (_React$Component) {
           currentForecast = _this$props.currentForecast,
           tomorrowForecast = _this$props.tomorrowForecast,
           weatherStation = _this$props.weatherStation;
-      var TempGit = _frontend_SvgComponents_iconExport__WEBPACK_IMPORTED_MODULE_2__["default"]["Github"];
-      var TempIn = _frontend_SvgComponents_iconExport__WEBPACK_IMPORTED_MODULE_2__["default"]["LinkedIn"];
+      var TempGit = _frontend_SvgComponents_iconExport__WEBPACK_IMPORTED_MODULE_2__["default"]['Github'];
+      var TempIn = _frontend_SvgComponents_iconExport__WEBPACK_IMPORTED_MODULE_2__["default"]['LinkedIn'];
       var display;
 
       if (currentForecast.weather && tomorrowForecast.weather) {
@@ -2401,21 +2401,23 @@ var Forecast = /*#__PURE__*/function (_React$Component) {
         }));
       } else {
         display = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          id: "defaultInfo"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "infoSpan"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          id: "instructions"
-        }, "Nagivate around the map, click to place marker.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Check local forecast automatically centers map allowing correlated wind data to be applied within the region.")));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "msg2"
+        }, "Navigate around the map, click to place marker."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "msg2"
+        }, "Check local forecast automatically centers map allowing correlated wind data to be applied within the region."));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "forecastDiv"
       }, display, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "projectInfo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "descript"
-      }, "D3 Visualization allows user to find forecasts and view a representation of current wind conditions in a particular area. Click desired location on map then Check Local Forecast extracts lat/lng coords from marker's location, bounds from the map, returning API data.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Points are generated and used to model paths based on the wind conditions in the subset of regions the path may travel. These collections of control points are mapped to a bezier curve reflecting change in slope over time; assuming minimal map distortion with this nearly conformal map projection.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "msg"
+      }, "D3 Visualization allows user to find forecasts and view a representation of current wind conditions in a particular area. Click desired location on map then Check Local Forecast extracts lat/lng coords from marker's location, bounds from the map, returning API data."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "msg"
+      }, "Points are generated and used to model paths based on the wind conditions in the subset of regions the path may travel. These collections of control points are mapped to a bezier curve reflecting change in slope over time; assuming minimal map distortion with this nearly conformal map projection.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "links"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "icons"
@@ -2814,7 +2816,7 @@ var Root = /*#__PURE__*/function (_React$Component) {
       zoom: 9,
       mapObj: {},
       marker: {},
-      location: "",
+      location: '',
       currentFor: {},
       tomorrowFor: {},
       quadrants: {},
@@ -2833,22 +2835,22 @@ var Root = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           start = _this$state.start,
           mapObj = _this$state.mapObj;
-      var mapContainer = document.getElementById("mapDiv");
-      mapboxgl.accessToken = "pk.eyJ1IjoicHJvc2UwMDIxIiwiYSI6ImNrMzZoYWdidTAxcm8zaW82MW5jZmV6c2EifQ.PRbSpg500wqcoctnYFTIog";
+      var mapContainer = document.getElementById('mapDiv');
+      mapboxgl.accessToken = 'pk.eyJ1IjoicHJvc2UwMDIxIiwiYSI6ImNrMzZoYWdidTAxcm8zaW82MW5jZmV6c2EifQ.PRbSpg500wqcoctnYFTIog';
       var map = new mapboxgl.Map({
         container: mapContainer,
-        style: "mapbox://styles/mapbox/dark-v10",
+        style: 'mapbox://styles/mapbox/dark-v10',
         center: [start[0], start[1]],
         zoom: this.state.zoom,
         hash: true
       });
-      map.on("load", function () {
+      map.on('load', function () {
         var startPos = map.getCenter();
         var marker = new mapbox_gl__WEBPACK_IMPORTED_MODULE_3__["Marker"]();
         marker.setLngLat([startPos.lng, startPos.lat]);
         marker._draggable = Boolean(true);
         marker.addTo(map);
-        map.on("click", function (e) {
+        map.on('click', function (e) {
           e.preventDefault();
           var moveLng = e.lngLat.lng;
           var moveLat = e.lngLat.lat;
@@ -2861,14 +2863,14 @@ var Root = /*#__PURE__*/function (_React$Component) {
             marker: marker
           });
         });
-        map.on("move", function () {
-          var hasSvg = document.getElementById("svgToRemove");
+        map.on('move', function () {
+          var hasSvg = document.getElementById('svgToRemove');
 
           if (hasSvg) {
             hasSvg.remove();
           }
 
-          var windDataButton = document.getElementById("applyData");
+          var windDataButton = document.getElementById('applyData');
 
           if (windDataButton) {
             _this2.setState({
@@ -2893,7 +2895,7 @@ var Root = /*#__PURE__*/function (_React$Component) {
           marker = _this$state2.marker;
       var newLng = marker._lngLat.lng;
       var newLat = marker._lngLat.lat;
-      var oldSvg = document.getElementById("svgToRemove");
+      var oldSvg = document.getElementById('svgToRemove');
 
       if (oldSvg) {
         oldSvg.remove();
@@ -2908,7 +2910,7 @@ var Root = /*#__PURE__*/function (_React$Component) {
       var nW = bounds.getNorthWest();
       var sE = bounds.getSouthEast();
       var sW = bounds.getSouthWest();
-      var mD = document.getElementById("mapDiv");
+      var mD = document.getElementById('mapDiv');
       var infoGather = {
         allStations: [nE, nW, sE, sW],
         center: [newLng, newLat],
@@ -2978,7 +2980,8 @@ var Root = /*#__PURE__*/function (_React$Component) {
       if (!windData) {
         display = null;
       } else {
-        display = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        display = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "btn",
           id: "applyData",
           onClick: function onClick() {
             return _this4.applyWindVisContent(quadrants, currentFor);
@@ -2992,8 +2995,9 @@ var Root = /*#__PURE__*/function (_React$Component) {
         id: "header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "headButton"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleClick
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.handleClick,
+        className: "btn"
       }, "Check Local Forecast"), display), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "h2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Bay Area Weather"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
